@@ -1,5 +1,12 @@
-import { BrowserRouter, Routes, Route }
+import {
+BrowserRouter,
+Routes,
+Route,
+useLocation
+}
 from "react-router-dom";
+
+import Navbar from "./components/Navbar";
 
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -8,11 +15,25 @@ import Expense from "./pages/Expense";
 import ExpenseList from "./pages/ExpenseList";
 import Salary from "./pages/Salary";
 
-function App(){
+
+function Layout(){
+
+const location=
+useLocation();
+
+const showNavbar=
+
+location.pathname !== "/"
+&&
+location.pathname !== "/login";
+
 
 return(
 
-<BrowserRouter>
+<>
+
+{showNavbar &&
+<Navbar/>}
 
 <Routes>
 
@@ -44,9 +65,24 @@ element={<ExpenseList/>}
 <Route
 path="/salary"
 element={<Salary/>}
-/>  
+/>
 
 </Routes>
+
+</>
+
+)
+
+}
+
+
+function App(){
+
+return(
+
+<BrowserRouter>
+
+<Layout/>
 
 </BrowserRouter>
 

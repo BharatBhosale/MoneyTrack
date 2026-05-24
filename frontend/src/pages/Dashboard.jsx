@@ -11,6 +11,15 @@ function Dashboard(){
 
     });
 
+    if(
+    !sessionStorage.getItem(
+    "user"
+    )
+    ){
+
+    window.location="/login";
+
+    }
 
     useEffect(()=>{
 
@@ -46,37 +55,65 @@ function Dashboard(){
 
     return(
 
-        <div>
+    <div className="dashboard">
 
-            <h1>
-                Budget Dashboard
-            </h1>
+    <h1>
 
-            <h2>
+    Budget Dashboard
 
-                Total Salary :
-                {dashboard.totalSalary}
+    </h1>
 
-            </h2>
+    <div className="card">
+
+    <h2>
+
+    Total Salary
+
+    </h2>
+
+    <h3>
+
+    ₹ {dashboard.totalSalary}
+
+    </h3>
+
+    </div>
 
 
-            <h2>
+    <div className="card">
 
-                Total Expense :
-                {dashboard.totalExpense}
+    <h2>
 
-            </h2>
+    Total Expense
+
+    </h2>
+
+    <h3>
+
+    ₹ {dashboard.totalExpense}
+
+    </h3>
+
+    </div>
 
 
+    <div className="card">
 
-            <h2>
+    <h2>
 
-                Remaining Balance :
-                {dashboard.remainingBalance}
+    Remaining Balance
 
-            </h2>
+    </h2>
 
-        </div>
+    <h3>
+
+    ₹ {dashboard.remainingBalance}
+
+    </h3>
+
+    </div>
+
+    </div>
 
     )
 

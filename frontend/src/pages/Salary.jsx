@@ -45,7 +45,7 @@ function Salary(){
 
     return(
 
-        <div>
+        <div className="container">
 
             <h1>
                 Add Salary
