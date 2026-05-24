@@ -35,7 +35,11 @@ function Dashboard(){
 
             const response =
             await API.get(
-                "/dashboard/summary"
+                "/dashboard/summary/"
+                +
+                sessionStorage.getItem(
+                "user"
+                )
             );
 
             setDashboard(

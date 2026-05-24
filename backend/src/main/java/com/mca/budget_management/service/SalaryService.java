@@ -14,19 +14,11 @@ public class SalaryService {
     @Autowired
     SalaryRepository salaryRepository;
 
+    public Salary addSalary(Salary salary){
 
-    // Add Salary
-
-    public Salary addSalary(
-            Salary salary){
-
-        return salaryRepository.save(
-                salary);
+        return salaryRepository.save(salary);
 
     }
-
-
-    // Get All Salary
 
     public List<Salary> getAllSalary(){
 

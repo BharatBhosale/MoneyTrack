@@ -15,7 +15,12 @@ function Salary(){
         const salaryData = {
 
             amount:amount,
-            month:month
+            month:month,
+
+            userEmail:
+            sessionStorage.getItem(
+            "user"
+            )
 
         };
 
@@ -29,6 +34,11 @@ function Salary(){
             alert(
                 "Salary Added"
             );
+
+
+            setAmount("");
+
+            setMonth("");
 
         }
 
@@ -48,13 +58,17 @@ function Salary(){
         <div className="container">
 
             <h1>
-                Add Salary
+
+            Add Salary
+
             </h1>
 
 
             <input
             type="number"
             placeholder="Enter Salary"
+
+            value={amount}
 
             onChange={(e)=>
 
@@ -69,6 +83,8 @@ function Salary(){
             <input
             type="text"
             placeholder="Enter Month"
+
+            value={month}
 
             onChange={(e)=>
 

@@ -21,7 +21,13 @@ const getExpenses = async()=>{
 
 const response=
 await API.get(
-"/expense/all"
+
+"/expense/all/"
++
+sessionStorage.getItem(
+"user"
+)
+
 );
 
 setExpenses(

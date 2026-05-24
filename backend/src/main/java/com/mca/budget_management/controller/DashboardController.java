@@ -7,20 +7,19 @@ import com.mca.budget_management.entity.DashboardResponse;
 import com.mca.budget_management.service.DashboardService;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/dashboard")
+@CrossOrigin("*")
 public class DashboardController {
 
     @Autowired
     DashboardService dashboardService;
 
 
-    @GetMapping("/summary")
-    public DashboardResponse getSummary(){
+    @GetMapping("/summary/{email}")
 
-        return dashboardService
-                .getDashboardData();
-
+    public DashboardResponse
+    getSummary(@PathVariable String email){
+    return dashboardService.getDashboardData(email);
     }
 
 }

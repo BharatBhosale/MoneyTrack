@@ -41,9 +41,7 @@ Add Expense
 Expense List
 
 </Link>
-
 </div>
-
 
 <div className="nav-right">
 
@@ -54,9 +52,7 @@ onClick={logout}>
 Logout
 
 </button>
-
 </div>
-
 </div>
 
 )

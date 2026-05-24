@@ -42,8 +42,6 @@ function Register(){
             );
 
 
-            // form clear
-
             setName("");
 
             setEmail("");

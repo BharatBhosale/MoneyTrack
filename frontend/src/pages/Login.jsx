@@ -6,48 +6,51 @@ function Login(){
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
-    const loginUser = async() =>{
+    const loginUser = async()=>{
 
-        const userData = {
+    const userData={
 
-            email:email,
-            password:password
+    email:email,
+    password:password
 
-        };
+    };
 
-        try{
+    try{
 
-            const response = await API.post(
-                "/user/login",
-                userData
-            );
+    const response=
+    await API.post(
+    "/user/login",
+    userData
+    );
 
-            alert(response.data);
+    if(response.data){
 
-            if(
-            response.data ===
-            "Login Successful"
-            ){
+    sessionStorage.setItem(
+    "user",
+    response.data.email
+    );
 
-            sessionStorage.setItem(
-            "user",
-            "loggedIn"
-            );
+    window.location=
+    "/dashboard";
 
-            window.location=
-            "/dashboard";
+    }
+    else{
 
-            }
+    alert(
+    "Invalid Email or Password"
+    );
 
-        }
+    }
 
-        catch(error){
+    }
 
-            alert(
-            "Login Failed"
-            );
+    catch(error){
 
-        }
+    alert(
+    "Login Failed"
+    );
+
+    }
 
     }
 

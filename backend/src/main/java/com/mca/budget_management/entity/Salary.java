@@ -9,7 +9,8 @@ import jakarta.persistence.Id;
 public class Salary {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+    strategy = GenerationType.IDENTITY)
 
     private Long id;
 
@@ -17,33 +18,61 @@ public class Salary {
 
     private String month;
 
+    private String userEmail;
 
-    // Getter Setter
 
     public Long getId() {
+
         return id;
+
     }
 
     public void setId(Long id) {
+
         this.id=id;
+
     }
 
 
     public double getAmount() {
+
         return amount;
+
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(
+            double amount) {
+
         this.amount=amount;
+
     }
 
 
     public String getMonth() {
+
         return month;
+
     }
 
-    public void setMonth(String month) {
+    public void setMonth(
+            String month) {
+
         this.month=month;
+
+    }
+
+
+    public String getUserEmail() {
+
+        return userEmail;
+
+    }
+
+    public void setUserEmail(
+            String userEmail) {
+
+        this.userEmail=userEmail;
+
     }
 
 }
