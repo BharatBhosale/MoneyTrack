@@ -9,7 +9,7 @@ public class DashboardResponse {
     private double remainingBalance;
 
 
-    // Getter Setter
+
 
     public double getTotalSalary() {
         return totalSalary;

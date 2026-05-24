@@ -16,26 +16,14 @@ public class SalaryController {
     @Autowired
     SalaryService salaryService;
 
-
-    // Add Salary
-
     @PostMapping("/add")
-    public Salary addSalary(
-            @RequestBody Salary salary){
-
-        return salaryService.addSalary(
-                salary);
-
+    public Salary addSalary(@RequestBody Salary salary){
+        return salaryService.addSalary(salary);
     }
-
-
-    // Get All Salary
 
     @GetMapping("/all")
     public List<Salary> getAllSalary(){
-
         return salaryService.getAllSalary();
-
     }
 
 }

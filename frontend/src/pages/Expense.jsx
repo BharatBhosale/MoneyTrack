@@ -23,7 +23,12 @@ function Expense(){
             expenseName:expenseName,
             category:category,
             amount:amount,
-            date:date
+            date:date,
+
+            userEmail:
+            sessionStorage.getItem(
+            "user"
+            )
 
         };
 
@@ -38,11 +43,15 @@ function Expense(){
                 "Expense Added"
             );
 
-            // Form clear
+
+            // Form Clear
 
             setExpenseName("");
+
             setCategory("");
+
             setAmount("");
+
             setDate("");
 
         }
@@ -169,7 +178,7 @@ function Expense(){
             <button
             onClick={addExpense}>
 
-                Add Expense
+            Add Expense
 
             </button>
 

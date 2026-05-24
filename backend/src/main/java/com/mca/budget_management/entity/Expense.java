@@ -21,47 +21,89 @@ public class Expense {
 
     private String date;
 
+    private String userEmail;
 
-    // Getter Setter
 
     public Long getId() {
+
         return id;
+
     }
 
     public void setId(Long id) {
+
         this.id=id;
+
     }
+
 
     public String getExpenseName() {
+
         return expenseName;
+
     }
 
-    public void setExpenseName(String expenseName) {
+    public void setExpenseName(
+            String expenseName) {
+
         this.expenseName=expenseName;
+
     }
+
 
     public String getCategory() {
+
         return category;
+
     }
 
-    public void setCategory(String category) {
+    public void setCategory(
+            String category) {
+
         this.category=category;
+
     }
+
 
     public double getAmount() {
+
         return amount;
+
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(
+            double amount) {
+
         this.amount=amount;
+
     }
+
 
     public String getDate() {
+
         return date;
+
     }
 
-    public void setDate(String date) {
+    public void setDate(
+            String date) {
+
         this.date=date;
+
+    }
+
+
+    public String getUserEmail() {
+
+        return userEmail;
+
+    }
+
+    public void setUserEmail(
+            String userEmail) {
+
+        this.userEmail=userEmail;
+
     }
 
 }

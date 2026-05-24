@@ -21,47 +21,49 @@ public class DashboardService {
     ExpenseRepository expenseRepository;
 
 
-    public DashboardResponse getDashboardData(){
+    public DashboardResponse
+    getDashboardData(
+    String userEmail){
 
-        DashboardResponse response =
-                new DashboardResponse();
+        DashboardResponse response = new DashboardResponse();
 
         double totalSalary=0;
 
         double totalExpense=0;
 
 
-        List<Salary> salaryList =
-                salaryRepository.findAll();
+        List<Salary>
+        salaryList=
 
-        for(Salary s : salaryList){
+        salaryRepository.findByUserEmail(userEmail);
 
-            totalSalary =
-            totalSalary + s.getAmount();
 
+        for(
+        Salary s:salaryList){
+
+        totalSalary=totalSalary+s.getAmount();
         }
 
 
-        List<Expense> expenseList =
-                expenseRepository.findAll();
 
-        for(Expense e : expenseList){
+        List<Expense>
+        expenseList=
 
-            totalExpense =
-            totalExpense + e.getAmount();
+        expenseRepository.findByUserEmail(userEmail);
 
+
+        for(
+        Expense e:expenseList){
+
+        totalExpense=totalExpense+e.getAmount();
         }
 
 
-        response.setTotalSalary(
-                totalSalary);
+        response.setTotalSalary(totalSalary);
 
-        response.setTotalExpense(
-                totalExpense);
+        response.setTotalExpense(totalExpense);
 
-        response.setRemainingBalance(
-                totalSalary-totalExpense);
-
+        response.setRemainingBalance(totalSalary-totalExpense);
         return response;
 
     }

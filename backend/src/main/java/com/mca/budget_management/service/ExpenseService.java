@@ -14,9 +14,6 @@ public class ExpenseService {
     @Autowired
     ExpenseRepository expenseRepository;
 
-
-    // Add Expense
-
     public Expense addExpense(
             Expense expense){
 
@@ -24,48 +21,30 @@ public class ExpenseService {
 
     }
 
+    public List<Expense>getAllExpenses(String userEmail){
 
-    // Get All Expenses
-
-    public List<Expense> getAllExpenses(){
-
-        return expenseRepository.findAll();
+        return expenseRepository.findByUserEmail(userEmail);
 
     }
-    // Update Expense
 
-    public Expense updateExpense(
-            Long id,
-            Expense expense){
+    public Expense updateExpense(Long id,Expense expense){
 
-        Expense oldExpense =
-                expenseRepository.findById(id)
-                .orElse(null);
+        Expense oldExpense = expenseRepository.findById(id).orElse(null);
 
         if(oldExpense != null){
 
-            oldExpense.setExpenseName(
-                    expense.getExpenseName());
+            oldExpense.setExpenseName(expense.getExpenseName());
 
-            oldExpense.setCategory(
-                    expense.getCategory());
+            oldExpense.setCategory(expense.getCategory());
 
-            oldExpense.setAmount(
-                    expense.getAmount());
+            oldExpense.setAmount(expense.getAmount());
 
-            oldExpense.setDate(
-                    expense.getDate());
+            oldExpense.setDate(expense.getDate());
 
-            return expenseRepository.save(
-                    oldExpense);
+            return expenseRepository.save(oldExpense);
         }
-
         return null;
     }
-
-
-
-    // Delete Expense
 
     public String deleteExpense(Long id){
 

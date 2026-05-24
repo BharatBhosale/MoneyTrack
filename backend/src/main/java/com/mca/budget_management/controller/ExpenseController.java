@@ -16,53 +16,27 @@ public class ExpenseController {
     @Autowired
     ExpenseService expenseService;
 
-
-    // Add Expense
-
     @PostMapping("/add")
-    public Expense addExpense(
-            @RequestBody Expense expense){
-
+    public Expense addExpense(@RequestBody Expense expense){
         return expenseService.addExpense(expense);
-
     }
-
-
-    // View All Expenses
-
-    @GetMapping("/all")
-    public List<Expense> getAllExpenses(){
-
-        return expenseService.getAllExpenses();
-
+    
+    @GetMapping("/all/{email}")
+    public List<Expense>
+    getAllExpenses(@PathVariable String email){
+    return expenseService.getAllExpenses(email);
     }
-
-    // Update Expense
 
     @PutMapping("/update/{id}")
 
-    public Expense updateExpense(
-
-            @PathVariable Long id,
-            @RequestBody Expense expense){
-
-        return expenseService.updateExpense(
-                id,
-                expense);
-
+    public Expense updateExpense(@PathVariable Long id,@RequestBody Expense expense){
+        return expenseService.updateExpense(id,expense);
     }
-
-
-
-    // Delete Expense
 
     @DeleteMapping("/delete/{id}")
 
-    public String deleteExpense(
-            @PathVariable Long id){
-
+    public String deleteExpense(@PathVariable Long id){
         return expenseService.deleteExpense(id);
-
     }
 
 }
