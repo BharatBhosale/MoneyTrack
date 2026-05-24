@@ -3,110 +3,144 @@ import API from "../services/Api";
 
 function ExpenseList(){
 
-    const [expenses,setExpenses]
-    = useState([]);
+const [expenses,setExpenses]
+= useState([]);
+
+const [search,setSearch]
+= useState("");
 
 
-    useEffect(()=>{
+useEffect(()=>{
 
-        getExpenses();
+getExpenses();
 
-    },[]);
-
-
-    const getExpenses = async()=>{
-
-        const response =
-        await API.get(
-            "/expense/all"
-        );
-
-        setExpenses(
-            response.data
-        );
-
-    };
+},[]);
 
 
-    const deleteExpense =
-    async(id)=>{
+const getExpenses = async()=>{
 
-        await API.delete(
-            "/expense/delete/"+id
-        );
+const response=
+await API.get(
+"/expense/all"
+);
 
-        alert(
-            "Expense Deleted"
-        );
+setExpenses(
+response.data
+);
 
-        getExpenses();
-
-    };
+};
 
 
-    return(
+const deleteExpense=
+async(id)=>{
 
-        <div>
+await API.delete(
+"/expense/delete/"+id
+);
 
-            <h1>
-                Expense List
-            </h1>
+alert(
+"Expense Deleted"
+);
 
-            {
+getExpenses();
 
-            expenses.map((e)=>(
-
-            <div
-            key={e.id}>
-
-            <h3>
-
-            {e.expenseName}
-
-            </h3>
-
-            <p>
-
-            Category :
-            {e.category}
-
-            </p>
-
-            <p>
-
-            Amount :
-            {e.amount}
-
-            </p>
-
-            <p>
-
-            Date :
-            {e.date}
-
-            </p>
+};
 
 
-            <button
-            onClick={()=>
-            deleteExpense(
-            e.id)}>
+const filteredExpenses =
 
-            Delete
+expenses.filter((e)=>
 
-            </button>
+e.expenseName
+.toLowerCase()
+.includes(
+search.toLowerCase()
+)
 
-            <hr/>
+);
 
-            </div>
 
-            ))
+return(
 
-            }
+<div className="container">
 
-        </div>
+<h1>
 
-    )
+Expense List
+
+</h1>
+
+
+<input
+type="text"
+placeholder="Search Expense"
+
+value={search}
+
+onChange={(e)=>
+setSearch(
+e.target.value)}
+/>
+
+<br/><br/>
+
+
+{
+
+filteredExpenses.map((e)=>(
+
+<div
+key={e.id}>
+
+<h3>
+
+{e.expenseName}
+
+</h3>
+
+<p>
+
+Category :
+{e.category}
+
+</p>
+
+<p>
+
+Amount :
+₹ {e.amount}
+
+</p>
+
+<p>
+
+Date :
+{e.date}
+
+</p>
+
+
+<button
+onClick={()=>
+deleteExpense(
+e.id
+)}>
+
+Delete
+
+</button>
+
+<hr/>
+
+</div>
+
+))
+
+}
+
+</div>
+
+)
 
 }
 

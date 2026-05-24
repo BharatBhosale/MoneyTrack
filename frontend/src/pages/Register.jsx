@@ -1,17 +1,22 @@
 import { useState } from "react";
 import API from "../services/Api";
 
-function Register() {
+function Register(){
 
-    const [name,setName] = useState("");
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
+    const [name,setName]
+    = useState("");
+
+    const [email,setEmail]
+    = useState("");
+
+    const [password,setPassword]
+    = useState("");
 
 
+    const registerUser =
+    async()=>{
 
-    const registerUser = async() => {
-
-        const userData = {
+        const userData={
 
             name:name,
             email:email,
@@ -19,60 +24,97 @@ function Register() {
 
         };
 
+
         try{
 
-            const response = await API.post(
-                "/user/register",
-                userData
+            const response =
+            await API.post(
+            "/user/register",
+            userData
             );
 
-            alert("Registration Successful");
+            alert(
+            "Registration Successful"
+            );
 
-            console.log(response.data);
+            console.log(
+            response.data
+            );
+
+
+            // form clear
+
+            setName("");
+
+            setEmail("");
+
+            setPassword("");
 
         }
+
         catch(error){
 
-            alert("Error");
+            alert(
+            "Error"
+            );
 
         }
 
     };
 
 
-
     return(
 
-        <div>
+        <div className="container">
 
-            <h1>Register Page</h1>
+            <h1>
+
+                Register Page
+
+            </h1>
+
 
             <input
             type="text"
             placeholder="Enter Name"
+
+            value={name}
+
             onChange={(e)=>
-                setName(e.target.value)}
+            setName(
+            e.target.value)}
             />
 
             <br/><br/>
+
 
             <input
             type="email"
             placeholder="Enter Email"
+
+            value={email}
+
             onChange={(e)=>
-                setEmail(e.target.value)}
+            setEmail(
+            e.target.value)}
             />
 
             <br/><br/>
+
 
             <input
             type="password"
             placeholder="Enter Password"
+
+            value={password}
+
             onChange={(e)=>
-                setPassword(e.target.value)}
+            setPassword(
+            e.target.value)}
             />
 
             <br/><br/>
+
 
             <button
             onClick={registerUser}>
@@ -81,9 +123,25 @@ function Register() {
 
             </button>
 
+
+            <br/><br/>
+
+
+            <p>
+
+            Already have account ?
+
+            <a href="/login">
+
+            Login Here
+
+            </a>
+
+            </p>
+
         </div>
 
-    );
+    )
 
 }
 
